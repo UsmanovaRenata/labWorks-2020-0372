@@ -27,7 +27,6 @@ int sum(int matrix1[ROWS1][COLS1], int matrix2[ROWS2][COLS2], int resMatrix[ROWS
 			resMatrix[i][j] = matrix1[i][j] + matrix2[i][j];
 		}
 	}
-	printMatrix(resMatrix);
 	return 0;
 }
 
@@ -41,7 +40,6 @@ int sub(int matrix1[ROWS1][COLS1], int matrix2[ROWS2][COLS2], int resMatrix[ROWS
 			resMatrix[i][j] = matrix1[i][j] - matrix2[i][j];
 		}
 	}
-	printMatrix(resMatrix);
 	return 0;
 }
 
@@ -58,7 +56,6 @@ int product(int matrix1[ROWS1][COLS1], int matrix2[ROWS2][COLS2], int resMatrix[
 			}
 		}
 	}
-	printMatrix(resMatrix);
 	return 0;
 }
 
@@ -103,6 +100,8 @@ int main() {
 			std::cin >> choice;
 			continue;
 		}
+
+		printMatrix(resMatrix);
 
 		std::cout << "Tap any key to continue or <ESC> to stop." << std::endl;
 		if (_getch() == 27) { break; }
