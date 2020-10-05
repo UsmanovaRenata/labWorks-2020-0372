@@ -1,0 +1,69 @@
+#include<iostream>
+        using namespace std;
+int a,b, indicator=0; //indicator: 1 to switch off;3 if input is wrong
+
+
+char operation;
+
+
+void hello(){
+    cout<<"Hi there! Im calculator"<<endl;
+}
+
+
+
+void divisionZeroCheck(){
+    if(operation=='/' && b==0){
+        indicator=3;
+    }
+}
+
+
+void inputAndCheck(){
+    a,b,indicator=0;
+    operation= ' ';
+    cin.clear();
+
+
+    cout<<"Enter A B and symbol of operation to do. type 0 0 0 to switch me off"<<endl;
+    
+
+
+
+
+if(!(cin>>a>>b>>operation &&(operation=='+'||operation=='-'||operation=='*'||operation=='/'))){
+    cout<<"Wrong input!"<<endl;
+    inputAndCheck();
+
+
+
+}else{
+    divisionZeroCheck();
+    if(indicator==3){
+        cout<<"Wrong input!"<<endl;
+        inputAndCheck();
+
+    }
+}
+}
+
+int main() {
+    hello();
+    do {
+
+        inputAndCheck();
+
+        switch (operation) {
+            case '*' :
+                cout << a * b << endl;
+            case '+' :
+                cout << a + b << endl;
+            case '-' :
+                cout << a - b << endl;
+            case '/' :
+                cout << a / b << endl;
+        }
+    } while(!indicator==1);
+    cout<<"cya ^_^";
+        return 1;
+}
