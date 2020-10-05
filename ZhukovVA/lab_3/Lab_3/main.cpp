@@ -22,7 +22,7 @@ void sortByCodes(char** words, int size) {
 
 int main() {
 	char text[100];
-	int size = 1, word = 0, letter = 0, index = 0, wordsize = 0;
+	int size = 1, word = 0, letter = 0;
 
 	std::cout << "Type your sentence (100 symbols max): ";
 	std::cin.getline(text, 100);
@@ -37,7 +37,7 @@ int main() {
 	//Create char array of char arrays to store splitted string
 	char** split = new char* [size];
 	for (int i = 0; i < size; i++) {
-		split[index++] = new char[100];
+		split[i] = new char[100];
 	}
 
 	//Split the string
