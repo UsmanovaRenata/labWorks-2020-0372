@@ -1,7 +1,8 @@
 #include <iostream>
 #include <limits>
 using namespace std;
-int a,b,onOffInd,inputInd=1; //ind:0=right input; 1= wrong input; on
+float a,b;
+int onOffInd,inputInd=1; //ind:0=right input; 1= wrong input; on
 char operation;
 void hello(){
     cout<<"Hello. im calculator ^_^"<<endl;
@@ -55,10 +56,12 @@ void inputAndCheck(){
 
 void calculate(){
     switch(operation){
-        case '-' : cout<<a<<operation<<b<<"="<<a-b<<endl; break;
-        case '+' : cout<<a<<operation<<b<<"="<<a+b<<endl;break;
-        case '*' : cout<<a<<operation<<b<<"="<<a*b<<endl;break;
-        case '/' : cout<<a<<operation<<b<<"="<<static_cast<double>(a)/b<<endl;break;
+
+        case '-' : cout<<a<<operation<<b<<"="<<a-b<<endl;
+        case '+' : cout<<a<<operation<<b<<"="<<a+b<<endl;
+        case '*' : cout<<a<<operation<<b<<"="<<a*b<<endl;
+        case '/' : cout<<a<<operation<<b<<"="<<a/b<<endl;
+        default: ;
     }
 }
 
