@@ -57,10 +57,10 @@ void inputAndCheck(){
 void calculate(){
     switch(operation){
 
-        case '-' : cout<<a<<operation<<b<<"="<<a-b<<endl;
-        case '+' : cout<<a<<operation<<b<<"="<<a+b<<endl;
-        case '*' : cout<<a<<operation<<b<<"="<<a*b<<endl;
-        case '/' : cout<<a<<operation<<b<<"="<<a/b<<endl;
+        case '-' : cout<<a<<operation<<b<<"="<<a-b<<endl;break;
+        case '+' : cout<<a<<operation<<b<<"="<<a+b<<endl;break;
+        case '*' : cout<<a<<operation<<b<<"="<<a*b<<endl;break;
+        case '/' : cout<<a<<operation<<b<<"="<<a/b<<endl;break;
         default: ;
     }
 }
