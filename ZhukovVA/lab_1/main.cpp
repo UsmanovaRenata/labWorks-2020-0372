@@ -4,30 +4,31 @@
 using namespace std;
 
 int main() {
-	float num1, num2;
-	char op;
-	int esc;
+	float Number_1, Number_2;
+	char Operator;
+	int Escape;
 
 	do {
 		system("cls");
 		cout << "Type two numbers and an operator in the following format 'Number_1 <Operator> Number_2': ";
-		cin >> num1 >> op >> num2;
-
-		switch (op) {
+		cin >> Number_1 >> Operator >> Number_2;
+		cout << "Result: ";
+		switch (Operator) {
 		case '+':
-			cout << "Result: " << num1 + num2;;
+			cout << Number_1 + Number_2;
 			break;
 		case '-':
-			cout << "Result: " << num1 - num2;;
+			cout << Number_1 - Number_2;
 			break;
 		case '*':
-			cout << "Result: " << num1 * num2;;
+			cout << Number_1 * Number_2;
 			break;
 		case '/':
-			if (!num2) {
+			if (!Number_2) {
 				cout << "Dividing by zero!";
-			} else {
-				cout << "Result: " << num1 / num2;
+			}
+			else {
+				cout << Number_1 / Number_2;
 			}
 			break;
 		default:
@@ -35,8 +36,8 @@ int main() {
 		}
 
 		cout << "\nPress any key to continue or <ESC> to exit...";
-		esc = _getch();
-	} while (esc != 27);
+		Escape = _getch();
+	} while (Escape != 27);
 
 	return 0;
 }
