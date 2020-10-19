@@ -10,8 +10,10 @@ int main() {
 
 	do {
 		system("cls");
+
 		cout << "Type two numbers and an operator in the following format 'Number_1 <Operator> Number_2': ";
 		cin >> Number_1 >> Operator >> Number_2;
+
 		cout << "Result: ";
 		switch (Operator) {
 		case '+':
@@ -26,8 +28,7 @@ int main() {
 		case '/':
 			if (!Number_2) {
 				cout << "Dividing by zero!";
-			}
-			else {
+			} else {
 				cout << Number_1 / Number_2;
 			}
 			break;
