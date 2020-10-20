@@ -1,22 +1,21 @@
 ﻿#include <iostream>
-#include <iostream>
 #include <conio.h>
-char ch;
+char escape;
 using namespace std;
 int main() {
-	float a1;
-	float a2;
-	float res;
+	float number1;
+	float number2;
+	float result;
 	char sign;
 	do {
 		cout << "Enter the first number" << endl;
-		while (!(cin >> a1)) {
+		while (!(cin >> number1)) {
 			cout << "Wrong type" << endl;
 			cin.clear();
 			cin.ignore();
 		}
 		cout << "Enter the second number" << endl;
-		while (!(cin >> a2)) {
+		while (!(cin >> number2)) {
 			cout << "Wrong type" << endl;
 			cin.clear();
 			cin.ignore();
@@ -28,27 +27,26 @@ int main() {
 			cin.ignore();
 		}
 		if (sign == '+') {
-			res = a1 + a2;
-			cout << res << endl;
-		}
-		if (sign == '-') {
-			res = a1 - a2;
-			cout << res << endl;
-		}
-		if (sign == '*') {
-			res = a1 * a2;
-			cout << res << endl;
-		}
-		if (sign == '/') {
-			if (a2 != 0) {
-				res = a1 / a2;
-				cout << res << endl;
+			result = number1 + number2;
+			cout << result << endl;
+		} else if (sign == '-') {
+			result = number1 - number2;
+			cout << result << endl;
+		} else if (sign == '*') {
+			result = number1 * number2;
+			cout << result << endl;
+		} else if (sign == '/') {
+			if (number2 != 0) {
+				result = number1 / number2;
+				cout << result << endl;
 			}
 			else {
 				cout << "Action is impossible" << endl;
 			}
+		} else {
+			cout << "Error" << endl;
 		}
 		cout << "Press esc to exit or any other key to continue" << endl;
-		ch = _getch();
-	} while (ch != 27);
+		escape= _getch();
+	} while (escape != 27);
 }
