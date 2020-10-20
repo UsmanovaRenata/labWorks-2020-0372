@@ -3,12 +3,12 @@
 using namespace std;
 int main()
 {
-	double a, b, c = 1;
-	char z, ch = 1;
+	double num_1, num_2, value = 1;
+	char  znak, ch = 1;
 	do
 	{
 		cout << "Write number 1: ";
-		while (!(cin >> a))
+		while (!(cin >> num_1))
 		{
 			cout << "wrong type" << endl;
 			cout << "Write number 1: ";
@@ -16,7 +16,7 @@ int main()
 			cin.ignore();
 		}
 		cout << "Write number 2: ";
-		while (!(cin >> b))
+		while (!(cin >> num_2))
 		{
 			cout << "wrong type" << endl;
 			cout << "Write number 2: ";
@@ -24,28 +24,28 @@ int main()
 			cin.ignore();
 		}
 		cout << "Operecion: ";
-		cin >> z;
-		while (z != '+' && z != '-' && z != '*' && z != '/')
+		cin >> znak;
+		while (znak != '+' && znak != '-' && znak != '*' && znak != '/')
 		{
 			cout << "error" << endl;
 			cout << "Operecion: ";
-			cin >> z;
-			if (z == '+' && z == '-' && z == '*' && z == '/')
+			cin >> znak;
+			if (znak == '+' || znak == '-' || znak == '*' || znak == '/')
 				break;
 		}
-		switch (z)
+		switch (znak)
 		{
-		case '+': c = a + b;
+		case '+': value = num_1 + num_2;
 			break;
-		case '-': c = a - b;
+		case '-': value = num_1 - num_2;
 			break;
-		case '*': c = a * b;
+		case '*': value = num_1 * num_2;
 			break;
-		case '/': c = a / b;
+		case '/': value = num_1 / num_2;
 			break;
 		default: cout << "Error";
 		}
-		cout << c << endl;
+		cout << "Value = " <<value << endl;
 		cout << "Press esc to exit or enter" << endl;
 		ch = _getch();
 
