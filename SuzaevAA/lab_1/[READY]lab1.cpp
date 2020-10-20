@@ -32,7 +32,7 @@ int main()
 			cin >> znak;
 			if (znak == '+' || znak == '-' || znak == '*' || znak == '/')
 				break;
-		}
+		} 
 		switch (znak)
 		{
 		case '+': value = num_1 + num_2;
