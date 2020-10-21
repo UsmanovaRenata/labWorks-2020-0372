@@ -1,79 +1,104 @@
 #include <iostream>
 #include <limits>
 using namespace std;
-float a,b;
-int onOffInd,inputInd=1; //ind:0=right input; 1= wrong input; on
-char operation;
+//ind:0=right input; 1= wrong input; o
 void hello(){
     cout<<"Hello. im calculator ^_^"<<endl;
 }
 
-void onOffCheck(){
-    if(a==0 && b==0 && operation=='0'){
-        onOffInd=1;
+bool onOffCheck(float numb1, float numb2, char operation){
+    if(numb1==0 && numb2==0 && operation=='0'){
+        return true;
+    }else{
+        return false;
     }
 }
 
-void inputAndCheck(){
-    a=0;
-    b=0;
-    operation='=';
-    inputInd=1;
-    while(inputInd==1) {
-        cout << "Type A B and operation to do. Type 0 0 0 to Off me" << endl;
-        while (inputInd == 1) {
-            if (!(cin >> a >> b >> operation)) {
-                cout << "Wrong input. Try again." << endl;
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                inputInd = 1;
-            } else {
-                inputInd = 0;
-            }
-        }
-            if (!(operation == '-' || operation == '+' || operation == '*' || operation == '/' || operation=='0') && inputInd == 0) {
-                cout<<"Wrong input! Try again"<<endl;
-                inputInd = 1;
-            }else{
-                inputInd=0;
-            }
-
-
-            if (operation == '/' && b == 0 && inputInd == 0) {
-                cout << "Wrong input. You can't do division by zero. Try again" << endl;
-                inputInd = 1;
-            }else{
-                inputInd=0;
-            }
-
-        onOffCheck();
-        if(onOffInd==0 && operation=='0'){
-            inputInd=1;
-        }
+float numb1Input(){
+    float numb1=0;
+    cout<<"Input A"<<endl;
+    if(cin>>numb1){
+        return numb1;
     }
+    cout<<"Wrong input"<<endl;
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    numb1Input();
+
 }
+float numb2Input(){
+    float numb2=0;
+    cout<<"Input B"<<endl;
+    if(cin>>numb2){
+        return numb2;
+    }
+    cout<<"Wrong input"<<endl;
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    numb2Input();
+}
+bool operationInputCheck(char operation){
+    if(operation=='-' || operation=='+' || operation=='*' || operation=='/' || operation=='0'  ) {
 
+        return true;
 
-void calculate(){
+    }
+    return false;
+}
+char operationInput(){
+    char operation;
+    cout<<"Input operation symbol"<<endl;
+    if(cin>>operation && operationInputCheck(operation)){
+        return operation;
+    }
+    cout<<"Wrong input"<<endl;
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(),'\n');
+    operationInput();
+}
+bool divisionsByZeroCheck(float numb1, float numb2, char operation){
+    if(operation=='/' && numb2==0){
+        return false;
+    }
+    return true;
+}
+void calculate(float numb1, float numb2, char operation){
     switch(operation){
 
-        case '-' : cout<<a<<operation<<b<<"="<<a-b<<endl;break;
-        case '+' : cout<<a<<operation<<b<<"="<<a+b<<endl;break;
-        case '*' : cout<<a<<operation<<b<<"="<<a*b<<endl;break;
-        case '/' : cout<<a<<operation<<b<<"="<<a/b<<endl;break;
+        case '-' : cout<<numb1<<operation<<numb2<<"="<<numb1-numb2<<endl;break;
+        case '+' : cout<<numb1<<operation<<numb2<<"="<<numb1+numb2<<endl;break;
+        case '*' : cout<<numb1<<operation<<numb2<<"="<<numb1*numb2<<endl;break;
+        case '/' : cout<<numb1<<operation<<numb2<<"="<<numb1/numb2<<endl;break;
         default: ;
     }
 }
 
 
 int main() {
-hello();
-while(onOffInd==0) {
+    char operation;
+    float numb1,numb2;
+    hello();
+    do {
+        cout << "Type 0 for 3 times to switch me off ^_^" << endl;
+        numb1 = numb1Input();
+        numb2 = numb2Input();
+        operation = operationInput();
+        if (divisionsByZeroCheck(numb1, numb2, operation)){
+            if (onOffCheck(numb1, numb2, operation)) {
+                cout << "Have a nice day! cya ^_^" << endl;
+                return 0;
+            }
+        if (operation != '0') {
+            calculate(numb1, numb2, operation);
+        } else {
+            cout << "Wrong input" << endl;
+        }
+    }else{
+            cout<<"I cant do division by zero, sorry :("<<endl;
+        }
 
-    inputAndCheck();
 
-    calculate();
-}
-cout<<"Have a nice day! cya ^_^"<<endl;
-return 0;
+
+    }while(!onOffCheck(numb1, numb2, operation));
+
 }
