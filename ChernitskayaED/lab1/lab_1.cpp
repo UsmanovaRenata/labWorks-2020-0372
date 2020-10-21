@@ -10,11 +10,21 @@ int main()
 	char ch;	
 	do{
 	cout << "Enter 1 number: ";
-	cin >> a;
+	while (!(cin >> a))
+	{
+		cin.clear();
+		cin.ignore();
+		cout << "Wrong type" << endl;
+	}
+	cout << "Enter 2 number: ";
+	while (!(cin >> b))
+	{
+		cin.clear();
+		cin.ignore();
+		cout << "Wrong type" << endl;
+	}
 	cout << "Enter the operation: ";
 	cin >> sing;
-	cout << "Enter 2 number: "; 
-	cin >> b;
 
 	if (b == 0 & sing == '/') 
 	{
