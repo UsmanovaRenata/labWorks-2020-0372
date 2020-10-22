@@ -40,4 +40,3 @@ int main()
         ch = _getch();
     } while (ch != 27);
 }
-
