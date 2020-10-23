@@ -4,41 +4,41 @@
 using namespace std;
 
 int main() {
-	float Number_1, Number_2;
-	char Operator;
-	int Escape;
+	float operand_1, operand_2;
+	char operation_sign;
+	int escape;
 
 	do {
 		system("cls");
 
-		cout << "Type two numbers and an operator in the following format 'Number_1 <Operator> Number_2': ";
-		cin >> Number_1 >> Operator >> Number_2;
+		cout << "Type two numbers and an operator in the following format 'operand_1 <operator> operand_2': ";
+		cin >> operand_1 >> operation_sign >> operand_2;
 
 		cout << "Result: ";
-		switch (Operator) {
+		switch (operation_sign) {
 		case '+':
-			cout << Number_1 + Number_2;
+			cout << operand_1 + operand_2;
 			break;
 		case '-':
-			cout << Number_1 - Number_2;
+			cout << operand_1 - operand_2;
 			break;
 		case '*':
-			cout << Number_1 * Number_2;
+			cout << operand_1 * operand_2;
 			break;
 		case '/':
-			if (!Number_2) {
+			if (!operand_2) {
 				cout << "Dividing by zero!";
 			} else {
-				cout << Number_1 / Number_2;
+				cout << operand_1 / operand_2;
 			}
 			break;
 		default:
 			cout << "The operator does not exist!";
 		}
 
-		cout << "\nPress any key to continue or <ESC> to exit...";
-		Escape = _getch();
-	} while (Escape != 27);
+		cout << "\nPress any key to continue or <escape> to exit...";
+		escape = _getch();
+	} while (escape != 27);
 
 	return 0;
 }
