@@ -1,82 +1,114 @@
 
+
 #include <iostream>
 
-    #include <ctime>
-    using namespace std;
-int main() {
-    const int maxValueForRand= 10;
-    const int size=10;
-    int arr[size];
-    int arr2[size];
-    srand(time(0));
-    cout<<"Basic array: ";
-    {
-        int j = 0;
-        for (int i = 0; i < size; i++) {
-            arr[i] = rand() % maxValueForRand + 1;
-            cout << arr[i] << ' ';
-            if (arr[i] % 2) {
-                arr2[j] = arr[i];
-                j++;
-
-            }else{
-                arr2[j]= maxValueForRand+1; // unreal value for arr[i]  to check later
-            }
-        }
+#include <ctime>
+using namespace std;
+void basicArrayInit(int * arr, int size, int max){
+    for(int i=0; i<size;i++){
+        arr[i] = rand() % max+ 1;
     }
+}
+void oddArrayInit(const int * basic_arr,int *odd_arr, const int size, int max){
+    int odd_arr_ind=0;
+    odd_arr[0]=max+1;
+    odd_arr[odd_arr_ind]=max+1;//unreal value for basic_array[i]  to check later
+    for(int i=0;i<size;i++){
+        odd_arr[i+1 - bool(i==size-1)]=max+1;
+        if (basic_arr[i]%2){
+        odd_arr[odd_arr_ind]=basic_arr[i];
+            odd_arr_ind++;
 
-    {
-        int i = 0;
-        int im_helpful;
-        while (i < size - 1) {
-            int j = 0;
-            while (j < size - 1) {
-                if (arr[j] > arr[j + 1]) {
-                    im_helpful = arr[j + 1];
-                    arr[j + 1] = arr[j];
-                    arr[j] = im_helpful;
-                }
-                j++;
-            }
-            i++;
         }
+
     }
-
-
-
-        cout<<endl<<"Sorted: ";
-        for(int i=0; i < size; i++){
-            cout<<arr[i]<<' ';
-        }
-        cout<<endl<<"New: ";
-        int summ=0,max=arr2[0],min=arr2[0];
-        int i=0;
-        for( i;i<size;i++){
-            if(arr2[i]%2 && arr2[i]!=maxValueForRand+1) {
-                cout << arr2[i] << " ";
-                summ += arr2[i];
-                if(arr2[i]>max){
-                    max=arr2[i];
-                }
-                if (arr2[i]<min){
-                    min=arr2[i];
-                }
-            }else{
-                break;
-            }
-
-        }
-        cout<<endl<<"Min: "<<min<<endl<<"Max: "<< max<< endl<< "Mid: "<< float(summ)/(i-1);
-        return 0;
-
 }
 
+void sortAnyArray(int * arr,const int size){  //bubbly
+    int im_helpful;
+    for(int j=0;j<size;j++) {
+        for (int i = 0; i < size-1; i++) {
+            if(arr[i]<arr[i+1]){
+                im_helpful=arr[i];
+                arr[i]=arr[i+1];
+                arr[i+1]=im_helpful;
+            }
+        }
+    }
+}
+int sumOfAnyArray(const int *arr,  const int size, const int max){
+    int sum=0;
+    for (int i = 0; i < size;i++){
+        if (arr[i] != max+1){
+            sum+=arr[i];
+        }
+    }
+    return sum;
+}
+int trueLengthOfAnyArray(const int *arr,const  int size,const int max){ //for odd one
+    int length=0;
+    for(int i=0;i<size;i++){
+
+        if(arr[i] != max+1){
+            length++;
+        }
 
 
+        }
+    return length;
+    }
 
 
+void printAnyArray( const int * arr,const int size, const int max) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] != max + 1) {
+            cout << arr[i] << ' ';
+        }
+    }
+    cout << endl;
+}
+int minValueOfAnyArray(const int * arr, const int size, const int max_allowed_value_for_each_element ){
+    int min_value_of_array = arr[0];
+    for(int i = 0; i<size;i++){
+        if(arr[i]<min_value_of_array && arr[i] != max_allowed_value_for_each_element+1){
+            min_value_of_array=arr[i];
+        }
+    }
+    return  min_value_of_array;
+}
+int main() {
+    const int maxArrValue= 10;
+    const int size=10;
+
+    srand(time(0));
+
+    int basic_arr[size];
+
+    basicArrayInit(basic_arr,size, maxArrValue);
+    cout<<"Basic array:"<<endl;
+        printAnyArray(basic_arr,size, maxArrValue);
+
+    sortAnyArray(basic_arr,size);
+
+    cout<<"Sorted basic array:"<<endl;
+        printAnyArray(basic_arr,size, maxArrValue);
+
+    int odd_arr[size];
+
+    oddArrayInit(basic_arr,odd_arr,size,maxArrValue);
+
+    cout<<"Odd array:"<<endl;
+    if ( odd_arr[0] == maxArrValue+1){  // If no odd elements in basic array
+        cout<<"Nothing here :)"<<endl;
+        return 1;
+    }
+        printAnyArray(odd_arr,size,maxArrValue);
+    cout<<"Mid value:\t"<<float(sumOfAnyArray(odd_arr,size,maxArrValue))/trueLengthOfAnyArray(odd_arr,size,maxArrValue)<<endl;
+    cout<<"Max value: \t"<<odd_arr[0]<<endl;
+    cout<<"Min value: \t"<< minValueOfAnyArray(odd_arr,size, maxArrValue)<<endl;
+
+    return 0;
 
 
-
-
+}
 
