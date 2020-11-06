@@ -76,3 +76,4 @@ int main()
 		std::cout << "Press any button to continue.\nPress ESC to end\n\n";
 		key_check = _getch();
 	} while (key_check != 27);
+}
