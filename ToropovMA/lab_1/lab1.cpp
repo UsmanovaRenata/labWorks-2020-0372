@@ -3,20 +3,19 @@
 
 double getValue()
 {
+	double x;
 	while (true)
 	{
-		std::cout << "Enter double: ";
-		double x;
 		std::cin >> x;
 		if (std::cin.fail())
 		{
 			std::cin.clear();
-			std::cin.ignore(32767, '\n');
-			std::cout << "Woopsie... some error occured... try again\n";
+			std::cin.ignore(10000, '\n');
+			std::cout << "Some error occured, please try again...\n";
 		}
 		else
 		{
-			std::cin.ignore(32767, '\n');
+			std::cin.ignore(10000, '\n');
 			return x;
 		}
 	}
@@ -24,56 +23,71 @@ double getValue()
 
 char getOperation()
 {
+	char x;
+
 	while (true)
 	{
-		std::cout << "Choose operation (+, -, *, /): ";
-		char sm;
-		std::cin >> sm;
-		if (sm == '+' or sm == '-' or sm == '*' or sm == '/')
+		std::cin >> x;
+		if (x == '+' || x == '-' || x == '*' || x == '/')
 		{
-			return sm;
+			std::cin.ignore(10000, '\n');
+			return x;
 		}
 		else
 		{
-			std::cout << "Woopsie, something gone wrong, try again...\n";
-			std::cin.ignore(32767, '\n');
+			std::cin.clear();
+			std::cin.ignore(10000, '\n');
+			std::cout << "Some error occured, please try again...\n";
 		}
-
 	}
 }
 
-void printResult(double a, char sm, double b)
+void printResult(double num1, char oper, double num2)
 {
-	if (sm == '+')
+	std::cout << "Result:\n";
+	switch (oper)
 	{
-		std::cout << "Result: " << a + b << "\n";
-	}
-	else if (sm == '-')
-	{
-		std::cout << "Result: " << a - b << "\n";
-	}
-	else if (sm == '*')
-	{
-		std::cout << "Result: " << a * b << "\n";
-	}
-	else if (sm == '/')
-	{
-		std::cout << "Result: " << a / b << "\n";
+	case '+':
+		std::cout << num1 + num2 << '\n';
+		break;
+	case '-':
+		std::cout << num1 - num2 << '\n';
+		break;
+	case '*':
+		std::cout << num1 * num2 << '\n';
+		break;
+	case '/':
+		if (num2 == 0)
+		{
+			std::cout << "Cannot be divided by 0. Try again\n";
+			break;
+		}
+		else
+		{
+			std::cout << num1 / num2 << '\n';
+			break;
+		}
 	}
 }
 
 int main()
 {
 	char key_check;
+
 	do
 	{
-		double num1 = getValue();
+		system("cls");
+
+		std::cout << "Enter first number:\n";
+		double number_1 = getValue();
+		std::cout << "Choose operation (+, -, *, /):\n";
 		char operation = getOperation();
-		double num2 = getValue();
+		std::cout << "Enter second number:\n";
+		double number_2 = getValue();
 
-		printResult(num1, operation, num2);
+		printResult(number_1, operation, number_2);
 
-		std::cout << "Press any button to continue.\nPress ESC to end\n\n";
+		std::cout << "Press ESC to stop.\nPress any button to continue\n\n";
 		key_check = _getch();
 	} while (key_check != 27);
 }
