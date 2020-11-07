@@ -10,7 +10,6 @@ void basicArrayInit(int * arr, int size, int max){
 }
 void oddArrayInit(const int * basic_arr,int *odd_arr, const int size, int max){
     int odd_arr_ind=0;
-    odd_arr[0]=max+1;
     odd_arr[odd_arr_ind]=max+1;//unreal value for basic_array[i]  to check later
     for(int i=0;i<size;i++){
         odd_arr[i+1 - (i==size-1)]=max+1;
