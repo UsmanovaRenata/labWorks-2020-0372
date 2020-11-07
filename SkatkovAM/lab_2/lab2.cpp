@@ -12,7 +12,7 @@ void oddArrayInit(const int * basic_arr,int *odd_arr, const int size, int max){
     int odd_arr_ind=0;
     odd_arr[odd_arr_ind]=max+1;//unreal value for basic_array[i]  to check later
     for(int i=0;i<size;i++){
-        odd_arr[i+1 - (i==size-1)]=max+1;
+        odd_arr[i+1 - (i==size-1)]=max+1; // weird index to not to init odd_arr[size]
         if (basic_arr[i]%2){
         odd_arr[odd_arr_ind]=basic_arr[i];
             odd_arr_ind++;
@@ -43,10 +43,10 @@ int sumOfAnyArray(const int *arr,  const int size, const int max){
     }
     return sum;
 }
-int trueLengthOfAnyArray(const int *arr,const  int size,const int max){ //for odd one
+int trueLengthOfAnyArray(const int *arr,const  int size,const int max){
     int length=0;
     for(int i=0;i<size;i++){
-        if(arr[i] != max+1){
+        if(arr[i] != max+1){ // != max+1 because array can be odd 
             length++;
         }
     }
@@ -106,3 +106,4 @@ int main() {
 
 
 }
+
