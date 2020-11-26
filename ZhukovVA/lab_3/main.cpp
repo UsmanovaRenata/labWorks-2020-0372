@@ -25,12 +25,12 @@ void sortByCodes(char words[WORDS][LETTERS], int size) {
 }
 
 int main() {
-	char text[300];
+	char text[301];
 	char split[WORDS][LETTERS];
 	int words = 0, letter = 0;
 
 	std::cout << "Type your sentence (300 symbols max, 20x15 words): ";
-	std::cin.getline(text, 100);
+	std::cin.getline(text, 301);
 
 	//Split the string
 	for (int i = 0; i < (int)strlen(text) + 1; i++) {
