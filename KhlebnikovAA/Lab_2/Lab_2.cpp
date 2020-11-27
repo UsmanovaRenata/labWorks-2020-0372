@@ -1,14 +1,14 @@
 ﻿#include <iostream>
 #include <ctime>
 void my_sort(int* arr, int size ) {
-    int i=0, j;
+    int i=0, j, temp;
     do {
         j = 0;
         do {
             if (arr[j+1] < arr[j]) {
-                arr[j + 1] = arr[j] + arr[j + 1];
-                arr[j] = arr[j + 1] - arr[j];
-                arr[j+1] = arr[j + 1] - arr[j];
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j+1] = temp;
             }
             j++;
         } while (j < size - 1);
