@@ -38,14 +38,14 @@ double squareroot(int num) {
 }
 
 //Check whether the number is prime or not
-const char* is_prime(int num) {
-	if (num <= 1) return "Not Prime";
+bool is_prime(int num) {
+	if (num <= 1) return false;
 
 	for (int i = 2; i < floor(squareroot(num)) + 1; i++) {
-		if (num % i == 0) return "Not Prime";
+		if (num % i == 0) return false;
 	}
 
-	return "Prime";
+	return true;
 }
 
 int main() {
@@ -73,12 +73,12 @@ int main() {
 	std::cout << "5. 65536 = 256" << "\t\t" << (256 == squareroot(65536) ? "True" : "False") << std::endl;
 
 	std::cout << "\n##### Is Prime #####" << std::endl;
-	std::cout << "1. 1 = Not Prime" << "\t" << ("Not Prime" == is_prime(1) ? "True" : "False") << std::endl;
-	std::cout << "2. -5 = Not Prime" << "\t" << ("Not Prime" == is_prime(-5) ? "True" : "False") << std::endl;
-	std::cout << "3. 4 = Not Prime" << "\t" << ("Not Prime" == is_prime(4) ? "True" : "False") << std::endl;
-	std::cout << "4. 7 = Prime" << "\t\t" << ("Prime" == is_prime(7) ? "True" : "False") << std::endl;
-	std::cout << "5. 25 = Not Prime" << "\t" << ("Not Prime" == is_prime(25) ? "True" : "False") << std::endl;
-	std::cout << "6. 997 = Prime" << "\t\t" << ("Prime" == is_prime(997) ? "True" : "False") << std::endl;
+	std::cout << "1. 1 = Not Prime" << "\t" << (!is_prime(1) ? "True" : "False") << std::endl;
+	std::cout << "2. -5 = Not Prime" << "\t" << (!is_prime(-5) ? "True" : "False") << std::endl;
+	std::cout << "3. 4 = Not Prime" << "\t" << (!is_prime(4) ? "True" : "False") << std::endl;
+	std::cout << "4. 7 = Prime" << "\t\t" << (is_prime(7) ? "True" : "False") << std::endl;
+	std::cout << "5. 25 = Not Prime" << "\t" << (!is_prime(25) ? "True" : "False") << std::endl;
+	std::cout << "6. 997 = Prime" << "\t\t" << (is_prime(997) ? "True" : "False") << std::endl;
 
 	system("pause");
 	return 0;
