@@ -1,12 +1,13 @@
 ﻿#include <iostream>
 #include <conio.h>
 using namespace std;
-float num_1, num_2, result;
-char ch, oper;
-bool correct;
+
 
 int main()
 {
+	float num_1, num_2, result;
+	char ch, oper;
+	bool correct;
 
 	do {
 		correct = true;
