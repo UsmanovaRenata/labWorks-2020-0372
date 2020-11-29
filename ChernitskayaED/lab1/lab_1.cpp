@@ -30,20 +30,22 @@ int main()
 	{
 		cout << "You can't divide by zero" << endl;
 	}
-	
+	int res;
 	switch (sing) 
 	{
-	case'+': cout << "Result: " << a + b <<endl<<"Click esc if you're finished" << endl;
+	case'+':res = a + b;
 		break;
-	case'-':cout << "Result: " << a - b<<endl << "Click esc you're finished" << endl;
+	case'-':res = a - b;
 		break;
-	case'*':cout << "Result: " << a * b << endl << "Click esc you're finished" << endl;
+	case'*':res = a * b;
 		break;
-	case'/':cout << "Result: " << a / b << endl << "Click esc you're finished" << endl;
+	case'/':res = a / b;
 		break;
 	default:
 		cout << "Sing unrecognized" << endl;
 	}
+	
+	cout << "Result: " << res << endl << "Click esc if you're finished" << endl;
 
 	ch= _getch(); 
  } while (ch != 27); 
