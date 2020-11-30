@@ -21,11 +21,10 @@ void oddArrayInit(const int * basic_arr,int *odd_arr, const int basic_size, int 
 
 
 void sortAnyArray(int * arr,const int size){  //bubbly
-    int im_helpful;
     for(int j=0;j<size;j++) {
         for (int i = 0; i < size-1; i++) {
             if(arr[i]<arr[i+1]){
-                im_helpful=arr[i];
+                int im_helpful=arr[i];
                 arr[i]=arr[i+1];
                 arr[i+1]=im_helpful;
             }
